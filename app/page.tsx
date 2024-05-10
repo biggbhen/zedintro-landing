@@ -498,7 +498,7 @@ export default function Home() {
 								</h3>
 								<FiChevronUp
 									className={`md:text-4xl text-2xl my-0 p-0 transform transition-transform duration-500 ${
-										faq === 1 ? 'rotate-180' : 'rotate-0'
+										faq === 1 ? 'rotate-0' : 'rotate-180'
 									}`}
 								/>
 							</div>
@@ -520,7 +520,7 @@ export default function Home() {
 								</h3>
 								<FiChevronUp
 									className={`md:text-4xl text-2xl my-0 p-0 transform transition-transform duration-500 ${
-										faq === 2 ? 'rotate-180' : 'rotate-0'
+										faq === 2 ? 'rotate-0' : 'rotate-180'
 									}`}
 								/>
 							</div>
@@ -542,7 +542,7 @@ export default function Home() {
 								</h3>
 								<FiChevronUp
 									className={`md:text-4xl text-2xl my-0 p-0 transform transition-transform duration-500 ${
-										faq === 3 ? 'rotate-180' : 'rotate-0'
+										faq === 3 ? 'rotate-0' : 'rotate-180'
 									}`}
 								/>
 							</div>

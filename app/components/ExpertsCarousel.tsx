@@ -53,7 +53,7 @@ const ExpertsCarousel: React.FC<Props> = () => {
 				reloadOnUpdate>
 				{experts.map((item: any) => (
 					<div
-						className='px-4 py-6 bg-white text-neutral-400 shadow-sm rounded-2xl min-h-[15rem] h-full md:h-72 sm:min-w-[24rem] w-full sm:w-fit ml-10 flex flex-col'
+						className='px-4 py-6 bg-white text-neutral-400 shadow-sm rounded-2xl min-h-[15rem] h-full md:h-72 sm:max-w-[24rem] w-full  ml-10 flex flex-col'
 						key={item.id}>
 						<div className='flex'>
 							<div className='h-20 w-20 object-cover relative'>
