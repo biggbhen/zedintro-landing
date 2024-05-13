@@ -23,7 +23,7 @@ export default function RootLayout({
 					<NavBar />
 				</div>
 
-				<div className=''>{children}</div>
+				<div>{children}</div>
 
 				<div className='pt-12 pb-8 bg-[#270058] '>
 					<div className='m-auto max-w-[1240px] lg:flex xl:px-0 md:px-10 px-6'>
@@ -93,8 +93,8 @@ export default function RootLayout({
 							</form>
 						</div>
 					</div>
-
-					<div className='border-t pt-6 border-[#475467] py-2 m-auto max-w-[1240px] mt-10 flex sm:flex-row flex-col space-y-4 md:space-y-0 items-center justify-between text-[#98A2B3] text-sm xl:px-0 md:px-10 px-6'>
+					<div className='border-t mt-6 border-[#475467]'></div>
+					<div className=' py-2 m-auto max-w-[1240px] mt-10 flex sm:flex-row flex-col space-y-4 md:space-y-0 items-center justify-between text-[#98A2B3] text-sm xl:px-0 md:px-10 px-6'>
 						<p>&copy; 2024 Get Intro. All rights reserved.</p>
 
 						<div className=''>

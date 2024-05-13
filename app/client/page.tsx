@@ -6,20 +6,29 @@ import {
 	FiChevronUp,
 	FiLinkedin,
 	FiPhone,
+	FiSearch,
 } from 'react-icons/fi';
 import { LuUser2 } from 'react-icons/lu';
 import { FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import searchIcon from '../../public/assets/icons/search-icon.svg';
-import { useEffect } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import ExpertsCarousel from '../components/ExpertsCarousel';
 import { AiOutlineDollar } from 'react-icons/ai';
 import Head from 'next/head';
+import { useRouter } from 'next/navigation';
+import { BiChevronDown } from 'react-icons/bi';
+import SelectMenu from '../components/SelectMenu';
+import { searchOption } from '../components/SelectOptions';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+	const [searchParams, setSearchParams] = useState('');
+	const [search, setSearch] = useState('');
+	const router = useRouter();
+
 	useEffect(() => {
 		gsap.fromTo(
 			'.bgIcons',
@@ -56,6 +65,23 @@ export default function Home() {
 			}
 		);
 	}, []);
+
+	const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		// dispatch(searchText(search));
+		router.push(`/search?search=${searchParams}&text=${search}`, {
+			scroll: false,
+		});
+	};
+
+	const handleFilterFields = (item: any) => {
+		setSearchParams(item.option);
+	};
+
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const { value } = e.target;
+		setSearch(value);
+	};
 
 	return (
 		<>
@@ -134,6 +160,42 @@ export default function Home() {
 					<p className='font-normal text-sm sm:text-base'>
 						Search for experts tailored to your needs
 					</p>
+
+					<form
+						className='text-center mx-auto w-full lg:w-10/12 mt-8 relative'
+						onSubmit={handleSearch}>
+						<div className='sm:rounded-xl rounded-lg max-w-5xl w-full m-auto flex bg-white shadow-md relative'>
+							<div className='bg-[#EDDBFF]/70 sm:rounded-l-xl rounded-l-lg flex items-center'>
+								<SelectMenu
+									options={searchOption}
+									className={'top-12 min-w-[10rem]'}
+									optionField='searchField'
+									handleSelect={handleFilterFields}>
+									<div className='space-x-2 px-4 text-sm flex justify-center items-center text-bgPurple'>
+										<p>{searchParams === 'skill' ? 'Skill' : 'Name'}</p>
+										<BiChevronDown className='text-xl' />
+									</div>
+								</SelectMenu>
+							</div>
+
+							<input
+								type='text'
+								name='industry'
+								placeholder={
+									searchParams === 'skill'
+										? 'example: marketing, architecture'
+										: 'example: Johnson, Anna'
+								}
+								className='pl-4 bg-white py-2 sm:py-3 lg:py-4 grow outline-none border-none placeholder:text-sm sm:rounded-r-xl rounded-r-lg'
+								value={search}
+								onChange={handleChange}
+							/>
+
+							<button className='flex items-center justify-center pr-5 text-right sm:rounded-r-xl rounded-r-lg absolute right-0 h-full'>
+								<FiSearch className='text-gray-500 lg:text-xl sm:text-lg text-base' />
+							</button>
+						</div>
+					</form>
 
 					<div className='m-auto max-w-[640px] my-10 flex flex-wrap sm:space-x-4 space-x-2 items-center justify-center'></div>
 

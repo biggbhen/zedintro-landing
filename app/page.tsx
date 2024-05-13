@@ -10,7 +10,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { MdOutlineCalendarMonth } from 'react-icons/md';
 import { AiOutlineDollar } from 'react-icons/ai';
-import EasyStepCarousel from './components/EasyStepCarousel';
+// import EasyStepCarousel from './components/EasyStepCarousel';
 import Head from 'next/head';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -67,10 +67,8 @@ export default function Home() {
 				.get(`${apiUrl}/v1/experts/search?limit=10&skip=0&orderBy=rating`)
 				.then((result) => {
 					const experts = result.data.data.docs;
-					console.log(experts);
 					setLoading(false);
 					setExperts(experts);
-					console.log(experts);
 				})
 				.catch(function (error) {
 					setLoading(false);
