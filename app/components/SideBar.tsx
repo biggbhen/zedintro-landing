@@ -10,6 +10,15 @@ type Props = {
 };
 
 const SideBar: React.FC<Props> = ({ toggle, handleToggle }) => {
+	console.log(window.location.pathname);
+	const signUp = () =>
+		window.location.pathname.includes('client')
+			? 'https://app.zedintro.com/signup/user'
+			: 'https://app.zedintro.com/signup/expert';
+	const logIn = () =>
+		window.location.pathname.includes('client')
+			? 'https://app.zedintro.com/login/user'
+			: 'https://app.zedintro.com/login/expert';
 	return (
 		<div>
 			<Transition.Root show={toggle} as={Fragment}>
@@ -77,9 +86,8 @@ const SideBar: React.FC<Props> = ({ toggle, handleToggle }) => {
 															Contact
 														</Link>
 													</li>
-
 													<li>
-														<Link href='https://app.zedintro.com/signup/expert'>
+														<Link href={signUp()}>
 															<button className='sm:py-3 py-2 sm:px-8 px-5 bg-[#270058] text-white rounded-lg shadow-md mx-auto border-0 inline-block w-36'>
 																Sign Up
 															</button>
@@ -87,7 +95,7 @@ const SideBar: React.FC<Props> = ({ toggle, handleToggle }) => {
 													</li>
 
 													<li>
-														<Link href='https://app.zedintro.com/login/expert'>
+														<Link href={logIn()}>
 															<button className='sm:py-3 py-2 sm:px-8 px-5 border-2 border-[#270058] text-[#270058] rounded-lg shadow-md mx-auto inline-block w-36'>
 																Login
 															</button>
