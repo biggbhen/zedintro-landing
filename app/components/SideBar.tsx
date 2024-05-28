@@ -1,8 +1,10 @@
 'use client';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { MdOutlineClose } from 'react-icons/md';
 import Link from 'next/link';
+// import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 type Props = {
 	toggle: boolean;
@@ -10,15 +12,22 @@ type Props = {
 };
 
 const SideBar: React.FC<Props> = ({ toggle, handleToggle }) => {
-	console.log(window.location.pathname);
-	const signUp = () =>
-		window.location.pathname.includes('client')
-			? 'https://app.zedintro.com/signup/user'
-			: 'https://app.zedintro.com/signup/expert';
-	const logIn = () =>
-		window.location.pathname.includes('client')
-			? 'https://app.zedintro.com/login/user'
-			: 'https://app.zedintro.com/login/expert';
+	const [login, setLogin] = useState('');
+	const [signup, setSignup] = useState('');
+	const pathname = usePathname();
+
+	useEffect(() => {
+		// Perform pathname check and any client-side actions within useEffect
+		if (pathname.includes('client')) {
+			// console.log('Pathname contains "client"');
+			setSignup('https://app.zedintro.com/signup/user');
+			setLogin('https://app.zedintro.com/login/user');
+		} else {
+			setSignup('https://app.zedintro.com/signup/expert');
+			setLogin('https://app.zedintro.com/login/expert');
+		}
+	}, [pathname]);
+
 	return (
 		<div>
 			<Transition.Root show={toggle} as={Fragment}>
@@ -87,7 +96,7 @@ const SideBar: React.FC<Props> = ({ toggle, handleToggle }) => {
 														</Link>
 													</li>
 													<li>
-														<Link href={signUp()}>
+														<Link href={signup}>
 															<button className='sm:py-3 py-2 sm:px-8 px-5 bg-[#270058] text-white rounded-lg shadow-md mx-auto border-0 inline-block w-36'>
 																Sign Up
 															</button>
@@ -95,7 +104,7 @@ const SideBar: React.FC<Props> = ({ toggle, handleToggle }) => {
 													</li>
 
 													<li>
-														<Link href={logIn()}>
+														<Link href={login}>
 															<button className='sm:py-3 py-2 sm:px-8 px-5 border-2 border-[#270058] text-[#270058] rounded-lg shadow-md mx-auto inline-block w-36'>
 																Login
 															</button>
