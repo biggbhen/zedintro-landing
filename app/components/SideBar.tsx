@@ -113,8 +113,14 @@ const SideBar: React.FC<Props> = ({ toggle, handleToggle }) => {
 
 													<li>
 														<p className='text-black'>
-															Not an expert?{' '}
-															<Link href='/client' className='text-[#270058]'>
+															{pathname.includes('client')
+																? 'Not a client? '
+																: 'Not an expert? '}
+															<Link
+																href={
+																	pathname.includes('client') ? '/' : '/client'
+																}
+																className='text-[#270058]'>
 																Click here
 															</Link>
 														</p>
