@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 	title: 'Zed-intro',
 	description:
 		'Access world-class industry experts at your convenience with ZedIntro. Our platform connects career and business professionals with top-notch mentors, offering valuable insights and guidance. Book time slots, reschedule if needed, and experience a simplified process through our user-friendly website and supportive community.',
+	icons: {
+		icon: '/favicon.ico',
+	},
 };
 
 export default function RootLayout({
